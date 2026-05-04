@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qalbi Interior</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- AOS Animation -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#0f0f0f;color:#fff;}
+
+header{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85');
+background-size:cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+header h1{
+font-family:'Playfair Display',serif;
+font-size:60px;
+letter-spacing:2px;
+}
+
+header p{margin-top:15px;font-size:18px;color:#ccc;}
+
+section{padding:80px 10%;}
+
+h2{
+font-family:'Playfair Display',serif;
+margin-bottom:20px;
+font-size:36px;
+}
+
+.about p{max-width:700px;line-height:1.7;color:#bbb;}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1a1a1a;
+padding:25px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.card:hover{transform:translateY(-8px);}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+.contact{
+background:#111;
+padding:60px;
+border-radius:10px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div>
+<h1>Qalbi Interior</h1>
+<p>Luxury Interior & Exterior Design Studio</p>
+</div>
+</header>
+
+<section class="about">
+<h2>About Us</h2>
+<p>Qalbi Interior Design is a modern fabrication and interior design firm established in 2021. Led by Director Meena Jangra, we specialize in delivering high-quality interior, exterior, and construction solutions. We focus on premium craftsmanship, contemporary designs, and timely project delivery to ensure complete client satisfaction.</p>
+</section>
+
+<section>
+<h2>Services</h2>
+<div class="services">
+<div class="card">Modular Kitchen</div>
+<div class="card">Wardrobe & Storage</div>
+<div class="card">False Ceiling</div>
+<div class="card">Office Interiors</div>
+<div class="card">ACP Cladding</div>
+<div class="card">Glass Facade</div>
+<div class="card">Aluminium Work</div>
+<div class="card">Front Elevation Design</div>
+</div>
+</section>
+
+<section>
+<h2>Gallery</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6" data-aos="fade-up" data-aos-delay="100">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7" data-aos="fade-up" data-aos-delay="200">
+<img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed" data-aos="fade-up" data-aos-delay="300">
+</div>
+</section>
+
+<section>
+<h2>Contact</h2>
+<div class="contact">
+<p><strong>Phone:</strong> 8076293119, 921074416</p>
+<p><strong>Email:</strong> Qalbi.interior@gmail.com</p>
+<p><strong>Location:</strong> Ashok Vihar Phase-3, Gurugram, Haryana</p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Qalbi Interior. All rights reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+AOS.init({duration:1200});
+</script>
+
+</body>
+</html>
