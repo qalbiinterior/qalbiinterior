@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qalbi Interior Design</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+}
+
+/* CONTAINER */
+.container {
+  max-width:1200px;
+  margin:auto;
+  padding:0 12px;
+}
+
+/* TOP BAR */
+.topbar {
+  background:rgba(0,0,0,0.75);
+  color:white;
+  font-size:15px;
+  padding:6px 0;
+}
+
+.topbar-content {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.top-left a, .top-right a {
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+  font-weight:500;
+}
+
+.whatsapp:hover { color:#25D366; }
+.instagram:hover { color:#C13584; }
+
+/* NAVBAR */
+.navbar {
+  position:absolute;
+  top:42px;
+  width:100%;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(10px);
+  padding:12px 0;
+  z-index:999;
+}
+
+.navbar-content {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo {
+  font-size:26px;
+  font-weight:700;
+  color:white;
+}
+
+.navbar a {
+  color:white;
+  text-decoration:none;
+  margin:0 14px;
+  font-size:18px;
+  font-weight:500;
+}
+
+.navbar a:hover {
+  border-bottom:2px solid white;
+}
+
+/* HERO */
+.hero {
+  height:100vh;
+  background:url('main.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+.hero::before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position:relative;
+  z-index:1;
+}
+
+#sparkle-text {
+  font-size:56px;
+  margin-bottom:15px;
+  position:relative;
+  display:inline-block;
+}
+
+/* SPARKLE */
+.sparkle {
+  position:absolute;
+  width:22px;
+  height:22px;
+  background:radial-gradient(circle, gold 0%, rgba(255,215,0,0.5) 5%, transparent 50%);
+  pointer-events:none;
+  border-radius:50%;
+  animation:sparkleFade 1s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+  0% { transform:scale(0.6); opacity:1; }
+  100% { transform:scale(1.4); opacity:0; }
+}
+
+.hero p {
+  font-size:20px;
+  max-width:700px;
+  margin:auto;
+}
+
+/* ✅ RUNNING SERVICES (NEW, DOES NOT BREAK ANYTHING) */
+.marquee {
+  background:#111;
+  color:white;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:12px 0;
+}
+
+.marquee-content {
+  display:inline-block;
+  animation:scroll 30s linear infinite;
+}
+
+.marquee span {
+  margin:0 40px;
+  font-size:16px;
+}
+
+.marquee:hover .marquee-content {
+  animation-play-state:paused;
+}
+
+@keyframes scroll {
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
+
+/* SECTION */
+.section {
+  padding:70px 0;
+  text-align:center;
+}
+
+/* SERVICES */
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+}
+.services-grid div {
+  background:#f4f4f4;
+  padding:20px;
+  border-radius:10px;
+}
+
+/* GALLERY */
+.gallery {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.gallery img {
+  width:260px;
+  height:180px;
+  margin:8px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:0.3s;
+}
+.gallery img:hover {
+  transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  top:0;
+  left:0;
+}
+.lightbox img {
+  max-width:90%;
+  margin:auto;
+  display:block;
+  margin-top:5%;
+}
+.lightbox:target { display:block; }
+
+/* FORM */
+form input, form textarea {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+
+/* FOOTER */
+.footer {
+  background:#111;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  .topbar-content {
+    flex-direction:column;
+    gap:6px;
+    text-align:center;
+  }
+
+  .navbar {
+    top:75px;
+  }
+
+  .navbar-content {
+    flex-direction:column;
+  }
+
+  .navbar a {
+    font-size:16px;
+    margin:6px;
+  }
+
+  .logo {
+    font-size:22px;
+  }
+
+  #sparkle-text {
+    font-size:30px;
+  }
+
+  .hero p {
+    font-size:16px;
+  }
+
+  .gallery img {
+    width:90%;
+    height:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container topbar-content">
+    <div class="top-left">
+      <a href="tel:8076293119"><i class="fa fa-phone"></i> 8076293119</a>
+      <a href="mailto:Qalbi.interior@gmail.com"><i class="fa fa-envelope"></i> Qalbi.interior@gmail.com</a>
+    </div>
+    <div class="top-right">
+      <a href="https://wa.me/918076293119" class="whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://instagram.com/qalbiinterior" class="instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="container navbar-content">
+    <div class="logo">QALBI INTERIOR</div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#feedback">Feedback</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1 id="sparkle-text">QALBI INTERIOR DESIGN</h1>
+    <p>
+      Crafting elegant interiors and durable exterior solutions with precision,
+      creativity, and a commitment to quality.
+    </p>
+  </div>
+</div>
+
+<!-- ✅ NEW RUNNING STRIP -->
+<div class="marquee">
+  <div class="marquee-content">
+    <span>ACP Cladding</span>
+    <span>Glass Facade</span>
+    <span>Aluminium Work</span>
+    <span>Modular Kitchen</span>
+    <span>Wardrobe</span>
+    <span>False Ceiling</span>
+    <span>Office Interior</span>
+    <span>Glass Railing</span>
+
+    <span>ACP Cladding</span>
+    <span>Glass Facade</span>
+    <span>Aluminium Work</span>
+    <span>Modular Kitchen</span>
+    <span>Wardrobe</span>
+    <span>False Ceiling</span>
+    <span>Office Interior</span>
+    <span>Glass Railing</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section container">
+  <h2>About Us</h2>
+  <p>Established in 2021, Qalbi Interior Design specializes in interior, exterior, fabrication and construction services.</p>
+</div>
+
+<!-- SERVICES -->
+<div id="services" class="section container">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div>Interior Design</div>
+    <div>Exterior Work</div>
+    <div>ACP Cladding</div>
+    <div>Glass Facade</div>
+    <div>Modular Kitchen</div>
+    <div>Wardrobe</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="section container">
+  <h2>Our Projects</h2>
+  <div class="gallery">
+    <a href="#img1"><img src="images/facade-acp/img1.jpg"></a>
+    <a href="#img2"><img src="images/modular-kitchen/img1.jpg"></a>
+  </div>
+</div>
+
+<div id="img1" class="lightbox"><img src="images/facade-acp/img1.jpg"></div>
+<div id="img2" class="lightbox"><img src="images/modular-kitchen/img1.jpg"></div>
+
+<!-- CONTACT -->
+<div id="contact" class="section container">
+  <h2>Contact</h2>
+  <p>Meena Jangra</p>
+  <p>8076293119</p>
+  <p>Qalbi.interior@gmail.com</p>
+</div>
+
+<!-- FEEDBACK -->
+<div id="feedback" class="section container">
+  <h2>Send Feedback / Request</h2>
+  <form action="mailto:Qalbi.interior@gmail.com" method="post" enctype="text/plain">
+    <input type="text" placeholder="Your Name" required>
+    <input type="tel" placeholder="Your Phone">
+    <textarea placeholder="Your Message" required></textarea>
+    <button style="padding:10px 20px; background:black; color:white;">Send</button>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 Qalbi Interior Design
+</div>
+
+<script>
+const text = document.getElementById("sparkle-text");
+let last = 0;
+
+text.addEventListener("mousemove", (e) => {
+  if (Date.now() - last < 35) return;
+  last = Date.now();
+
+  const rect = text.getBoundingClientRect();
+
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("sparkle");
+
+  sparkle.style.left = (e.clientX - rect.left) + "px";
+  sparkle.style.top = (e.clientY - rect.top) + "px";
+
+  text.appendChild(sparkle);
+
+  setTimeout(() => sparkle.remove(), 1000);
+});
+</script>
+
+</body>
+</html>
