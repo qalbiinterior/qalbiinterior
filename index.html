@@ -1,423 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qalbi Interior Design</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qalbi Interior Design | Design from Heart</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="logo.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-html { scroll-behavior:smooth; }
+    <style>
+        :root {
+            --gold: #e6c97a;
+            --gold-text: #c49a2d;
+            --black: #111111;
+            --dark-olive: #7a6a4f; /* Derived from your image for accents */
+            --beige-bg: #FAF6F0; /* Matching the image background */
+        }
 
-body {
-  margin:0;
-  font-family:'Poppins',sans-serif;
-}
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #ffffff; }
 
-/* CONTAINER */
-.container {
-  max-width:1200px;
-  margin:auto;
-  padding:0 12px;
-}
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
 
-/* TOP BAR */
-.topbar {
-  background:rgba(0,0,0,0.75);
-  color:white;
-  font-size:15px;
-  padding:6px 0;
-}
+        /* --- HEADER WRAPPER --- */
+        .header-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+        }
 
-.topbar-content {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+        /* --- TOPBAR --- */
+        .topbar {
+            background: linear-gradient(90deg, #e6c97a, #f3e3b0);
+            color: #020202;
+            padding: 6px 0;
+        }
+        .topbar-content { display: flex; justify-content: space-between; align-items: center; }
+        .topbar a { color: #222; text-decoration: none; margin-right: 12px; font-weight: 500; }
 
-.top-left a, .top-right a {
-  color:white;
-  text-decoration:none;
-  margin:0 10px;
-  font-weight:500;
-}
+        /* SOCIAL ICONS */
+        .icon-box { display: flex; flex-direction: column; align-items: center; margin-left: 15px; font-size: 10px; text-transform: uppercase; }
+        .icon {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #333; background: white; transition: 0.3s;
+        }
+        .whatsapp:hover { background: #25D366; color: white; transform: scale(1.15); }
+        .instagram:hover { background: #C13584; color: white; transform: scale(1.15); }
 
-.whatsapp:hover { color:#25D366; }
-.instagram:hover { color:#C13584; }
+        /* --- NAVBAR --- */
+        .navbar {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            transition: 0.4s;
+            position: relative;
+        }
+        .navbar.scrolled { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); }
+        .navbar-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-family: 'Cinzel', serif; font-size: 32px; color: white; text-decoration: none; }
+        
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: var(--gold); margin-left: 20px; text-decoration: none; font-size: 16px; transition: 0.3s; font-weight: 500; }
+        .nav-links a:hover { color: white; }
 
-/* NAVBAR */
-.navbar {
-  position:absolute;
-  top:42px;
-  width:100%;
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(10px);
-  padding:12px 0;
-  z-index:999;
-}
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 28px;
+            color: var(--gold);
+            cursor: pointer;
+        }
 
-.navbar-content {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('main.png') center/cover no-repeat;
+            z-index: -1;
+            animation: zoomBg 12s infinite alternate;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            margin-top: 80px; 
+        }
+        .hero-content h1 { font-family: 'Cinzel', serif; font-size: clamp(32px, 6vw, 60px); margin-bottom: 5px; }
+        .tagline { font-size: 1.2rem; font-weight: 300; max-width: 800px; margin: auto; padding: 0 20px 30px 20px; }
+        
+        /* GET QUOTE BUTTON */
+        .btn-quote {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--gold);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .btn-quote:hover { background-color: white; transform: scale(1.05); }
 
-.logo {
-  font-size:26px;
-  font-weight:700;
-  color:white;
-}
+        @keyframes zoomBg { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
 
-.navbar a {
-  color:white;
-  text-decoration:none;
-  margin:0 14px;
-  font-size:18px;
-  font-weight:500;
-}
+        /* --- MARQUEE --- */
+        .marquee { background: #111; color: white; overflow: hidden; padding: 15px 0; }
+        .marquee-content { display: inline-block; white-space: nowrap; animation: scroll 30s linear infinite; }
+        .marquee span { margin: 0 30px; }
+        .marquee i { color: gold; margin-right: 8px; }
 
-.navbar a:hover {
-  border-bottom:2px solid white;
-}
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* HERO */
-.hero {
-  height:100vh;
-  background:url('main.png') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  position:relative;
-}
+        /* --- SECTIONS --- */
+        .section { padding: 80px 0; text-align: center; }
+        h2 { font-family: 'Cinzel', serif; font-size: 36px; margin-bottom: 20px; }
 
-.hero::before {
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.45);
-}
+        /* --- PORTFOLIO / GALLERY SECTION --- */
+        .portfolio-wrapper { display: flex; gap: 40px; margin-top: 40px; text-align: left; }
+        .portfolio-tabs { width: 30%; display: flex; flex-direction: column; gap: 15px; }
+        .portfolio-tab {
+            padding: 18px 20px; background: #f9f9f9; border-left: 4px solid transparent;
+            cursor: pointer; transition: 0.3s; font-family: 'Cinzel', serif; font-size: 18px;
+            font-weight: 600; color: #333; border-radius: 0 8px 8px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .portfolio-tab:hover { background: #f1f1f1; }
+        .portfolio-tab.active { background: #fff; border-left: 4px solid var(--gold); color: var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-.hero-content {
-  position:relative;
-  z-index:1;
-}
+        .portfolio-gallery { 
+            width: 70%; position: relative; height: 450px; border-radius: 8px; 
+            overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); background: #f1f1f1;
+        }
+        .gallery-slideshow { display: none; width: 100%; height: 100%; position: relative; }
+        .gallery-slideshow.active { display: block; }
+        .gallery-slideshow img { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; z-index: 0;
+        }
+        .gallery-slideshow img.active-slide { opacity: 1; z-index: 1; }
 
-#sparkle-text {
-  font-size:56px;
-  margin-bottom:15px;
-  position:relative;
-  display:inline-block;
-}
+        /* --- SERVICES CARDS SECTION --- */
+        .subsection-title {
+            font-family: 'Cinzel', serif; font-size: 28px; color: var(--black);
+            margin-bottom: 40px; text-align: center; border-bottom: 2px solid var(--gold);
+            display: inline-block; padding-bottom: 10px;
+        }
+        .services-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; text-align: center; margin-bottom: 60px; }
+        .service-card-item { background: #fff; padding: 35px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-bottom: 3px solid transparent; }
+        .service-card-item:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); border-bottom: 3px solid var(--gold); }
+        .service-card-item h4 { color: var(--gold-text); font-family: 'Cinzel', serif; font-size: 20px; margin-top: 0; margin-bottom: 15px; letter-spacing: 0.5px; }
+        .service-card-item p { color: #666; font-size: 15px; margin: 0; line-height: 1.6; }
 
-/* SPARKLE */
-.sparkle {
-  position:absolute;
-  width:22px;
-  height:22px;
-  background:radial-gradient(circle, gold 0%, rgba(255,215,0,0.5) 5%, transparent 50%);
-  pointer-events:none;
-  border-radius:50%;
-  animation:sparkleFade 1s ease-out forwards;
-}
+        /* --- ABOUT SECTION --- */
+        .about-box { max-width: 900px; margin: auto; text-align: justify; font-size: 16px; color: #555; line-height: 1.8; background: #fdfdfd; padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
 
-@keyframes sparkleFade {
-  0% { transform:scale(0.6); opacity:1; }
-  100% { transform:scale(1.4); opacity:0; }
-}
+        /* --- WHY CHOOSE US SECTION --- */
+        .why-choose-us { background-color: var(--beige-bg); text-align: left; position: relative; overflow: hidden; }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        
+        .why-text h3 { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; color: #333; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;}
+        .why-text h3 i { color: var(--dark-olive); }
+        .why-text h2 { font-family: 'Cinzel', serif; font-size: clamp(32px, 4vw, 46px); color: #222; margin-top: 0; margin-bottom: 20px; line-height: 1.2; text-align: left; }
+        .why-text > p { color: #555; line-height: 1.6; margin-bottom: 30px; }
 
-.hero p {
-  font-size:20px;
-  max-width:700px;
-  margin:auto;
-}
+        .expertise-block { margin-bottom: 30px; }
+        .expertise-block i { font-size: 30px; color: var(--dark-olive); margin-bottom: 10px; }
+        .expertise-block h4 { font-family: 'Poppins', sans-serif; font-size: 20px; color: #222; margin: 0 0 10px 0; }
+        .expertise-block p { color: #666; font-size: 14px; line-height: 1.6; margin: 0; }
 
-/* ✅ RUNNING SERVICES (NEW, DOES NOT BREAK ANYTHING) */
-.marquee {
-  background:#111;
-  color:white;
-  overflow:hidden;
-  white-space:nowrap;
-  padding:12px 0;
-}
+        .progress-box { margin-bottom: 40px; }
+        .bar-item { margin-bottom: 20px; }
+        .bar-header { display: flex; justify-content: space-between; font-weight: 600; color: #222; font-size: 15px; margin-bottom: 8px; }
+        .bar-bg { width: 100%; height: 8px; background-color: #e5dfd3; border-radius: 5px; overflow: hidden; }
+        .bar-fill { height: 100%; background-color: var(--dark-olive); border-radius: 5px; }
 
-.marquee-content {
-  display:inline-block;
-  animation:scroll 30s linear infinite;
-}
+        .why-images { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: auto auto; gap: 20px; position: relative; }
+        .img-top { grid-column: 1 / 3; grid-row: 1; width: 90%; justify-self: end; border-radius: 20px; border-bottom-left-radius: 50px; object-fit: cover; height: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .img-bottom { grid-column: 1; grid-row: 2; width: 100%; height: 250px; border-radius: 20px; border-top-right-radius: 50px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .stats-box { grid-column: 2; grid-row: 2; background-color: var(--dark-olive); color: white; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; height: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .stats-box h4 { font-size: 36px; margin: 0; font-family: 'Poppins', sans-serif; font-weight: 700; }
+        .stats-box p { margin: 5px 0 0 0; font-size: 16px; opacity: 0.9; }
 
-.marquee span {
-  margin:0 40px;
-  font-size:16px;
-}
+        /* Rotating Stamp CSS */
+        .rotating-stamp { position: absolute; top: 10%; left: 45%; transform: translateX(-50%); width: 120px; height: 120px; z-index: 2; }
+        .rotating-stamp svg { width: 100%; height: 100%; animation: spin 10s linear infinite; }
+        .stamp-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--dark-olive); font-size: 24px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-.marquee:hover .marquee-content {
-  animation-play-state:paused;
-}
+        /* --- HOW IT WORKS SECTION --- */
+        .how-it-works-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 40px; }
+        .step-card { text-align: center; padding: 30px 20px; }
+        .step-number { width: 60px; height: 60px; background: var(--gold); color: #000; font-size: 24px; font-family: 'Cinzel', serif; font-weight: bold; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 5px 15px rgba(230, 201, 122, 0.4); }
+        .step-card h4 { font-size: 20px; margin-bottom: 10px; color: var(--black); }
+        .step-card p { color: #666; font-size: 14px; line-height: 1.6; }
 
-@keyframes scroll {
-  0% { transform:translateX(0); }
-  100% { transform:translateX(-50%); }
-}
+        /* --- FAQS SECTION --- */
+        .faq-container { max-width: 800px; margin: 40px auto 0 auto; text-align: left; }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 15px 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 18px; font-weight: 500; cursor: pointer; color: var(--black); transition: 0.3s; padding: 10px 0; }
+        .faq-question:hover { color: var(--gold-text); }
+        .faq-question i { transition: transform 0.3s; color: var(--gold-text); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: #555; line-height: 1.6; }
+        .faq-answer p { margin: 10px 0 20px 0; font-size: 15px; }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
 
-/* SECTION */
-.section {
-  padding:70px 0;
-  text-align:center;
-}
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 40px; text-align: left; }
+        .contact-info { padding: 20px 0; }
+        .contact-info h3 { font-family: 'Cinzel', serif; font-size: 28px; color: var(--black); margin-top: 0; margin-bottom: 15px; }
+        .contact-info > p { color: #555; line-height: 1.6; margin-bottom: 30px; }
+        .info-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .info-item i { font-size: 24px; color: var(--gold); margin-right: 20px; margin-top: 5px; width: 30px; text-align: center; }
+        .info-item h4 { margin: 0 0 5px 0; font-size: 18px; color: var(--black); }
+        .info-item p { margin: 0; color: #666; line-height: 1.5; }
 
-/* SERVICES */
-.services-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-  gap:20px;
-}
-.services-grid div {
-  background:#f4f4f4;
-  padding:20px;
-  border-radius:10px;
-}
+        .contact-box { background: #fdfdfd; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif; box-sizing: border-box; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .submit-btn { background-color: var(--gold); color: black; border: none; padding: 15px 30px; width: 100%; font-weight: 700; text-transform: uppercase; cursor: pointer; border-radius: 5px; transition: 0.3s; }
+        .submit-btn:hover { background-color: #000; color: white; }
+        .submit-btn:disabled { background-color: #ccc; cursor: not-allowed; }
 
-/* GALLERY */
-.gallery {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.gallery img {
-  width:260px;
-  height:180px;
-  margin:8px;
-  object-fit:cover;
-  border-radius:10px;
-  transition:0.3s;
-}
-.gallery img:hover {
-  transform:scale(1.05);
-}
+        /* --- FLOATING TOP BUTTON --- */
+        #scrollTop { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--gold); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 2000; text-decoration: none; }
+        #scrollTop.show { opacity: 1; visibility: visible; }
 
-/* LIGHTBOX */
-.lightbox {
-  display:none;
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.9);
-  top:0;
-  left:0;
-}
-.lightbox img {
-  max-width:90%;
-  margin:auto;
-  display:block;
-  margin-top:5%;
-}
-.lightbox:target { display:block; }
+        /* --- FOOTER --- */
+        .footer { background: #111; color: white; padding: 30px; text-align: center; }
 
-/* FORM */
-form input, form textarea {
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-}
+        /* --- MOBILE RESPONSIVE FIXES --- */
+        @media(max-width: 768px) {
+            .section { padding: 60px 15px; }
+            .container { padding: 0 15px; }
+            
+            .hero h1 { font-size: 36px; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 30px; }
+            .contact-box { padding: 25px 15px; }
+            
+            /* Mobile Navbar Toggle */
+            .mobile-menu-btn { display: block; }
+            .nav-links { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(17, 17, 17, 0.95); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+            .nav-links.active { max-height: 400px; padding: 15px 0; }
+            .nav-links a { margin: 12px 0; font-size: 18px; }
 
-/* FOOTER */
-.footer {
-  background:#111;
-  color:white;
-  padding:20px;
-  text-align:center;
-}
+            /* Mobile Portfolio Gallery */
+            .portfolio-wrapper { flex-direction: column; gap: 20px; }
+            .portfolio-tabs { width: 100%; flex-direction: row; overflow-x: auto; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+            .portfolio-tab { white-space: nowrap; border-left: none; border-bottom: 4px solid transparent; border-radius: 8px 8px 0 0; }
+            .portfolio-tab.active { border-left: none; border-bottom: 4px solid var(--gold); }
+            .portfolio-tabs::-webkit-scrollbar { display: none; }
+            .portfolio-gallery { width: 100%; height: 280px; }
 
-/* MOBILE */
-@media (max-width:768px){
-  .topbar-content {
-    flex-direction:column;
-    gap:6px;
-    text-align:center;
-  }
-
-  .navbar {
-    top:75px;
-  }
-
-  .navbar-content {
-    flex-direction:column;
-  }
-
-  .navbar a {
-    font-size:16px;
-    margin:6px;
-  }
-
-  .logo {
-    font-size:22px;
-  }
-
-  #sparkle-text {
-    font-size:30px;
-  }
-
-  .hero p {
-    font-size:16px;
-  }
-
-  .gallery img {
-    width:90%;
-    height:auto;
-  }
-}
-</style>
+            /* Mobile Why Choose Us */
+            .why-grid { grid-template-columns: 1fr; gap: 40px; }
+            .rotating-stamp { top: 5%; left: 80%; width: 80px; height: 80px; }
+            .img-top { height: 200px; }
+            .img-bottom, .stats-box { height: 180px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="container topbar-content">
-    <div class="top-left">
-      <a href="tel:8076293119"><i class="fa fa-phone"></i> 8076293119</a>
-      <a href="mailto:Qalbi.interior@gmail.com"><i class="fa fa-envelope"></i> Qalbi.interior@gmail.com</a>
+    <div class="header-wrapper">
+        <div class="topbar">
+            <div class="container topbar-content">
+                <div>
+                    <a href="tel:+917428717540"><i class="fa fa-phone"></i> +91 7428717540</a>
+                    <a href="mailto:Qalbi.interior@gmail.com"><i class="fa fa-envelope"></i> Qalbi.interior@gmail.com</a>
+                </div>
+                <div style="display:flex;">
+                    <div class="icon-box">
+                        <a href="https://wa.me/917428717540" class="icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <span>WhatsApp</span>
+                    </div>
+                    <div class="icon-box">
+                        <a href="https://instagram.com/qalbiinterior" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                        <span>Instagram</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <div class="container navbar-content">
+                <a href="#" class="logo">QALBI</a>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#portfolio">Gallery</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </nav>
     </div>
-    <div class="top-right">
-      <a href="https://wa.me/918076293119" class="whatsapp">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-      </a>
-      <a href="https://instagram.com/qalbiinterior" class="instagram">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Qalbi Interior Design</h1>
+            <h2 style="color:var(--gold); border:none; margin-top:0;">Design from Heart</h2>
+            <p class="tagline">Crafting elegant interiors and durable exterior solutions with precision, creativity, and a commitment to quality.</p>
+            <a href="#contact" class="btn-quote">Get Quote</a>
+        </div>
+    </header>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span><i class="fa-solid fa-building"></i> ACP Cladding</span>
+            <span><i class="fa-solid fa-city"></i> Glass Facade</span>
+            <span><i class="fa-solid fa-industry"></i> Aluminium Work</span>
+            <span><i class="fa-solid fa-kitchen-set"></i> Modular Kitchen</span>
+            <span><i class="fa-solid fa-door-open"></i> Wardrobe</span>
+            <span><i class="fa-solid fa-layer-group"></i> False Ceiling</span>
+            <span><i class="fa-solid fa-building"></i> ACP Cladding</span>
+            <span><i class="fa-solid fa-city"></i> Glass Facade</span>
+            <span><i class="fa-solid fa-industry"></i> Aluminium Work</span>
+            <span><i class="fa-solid fa-kitchen-set"></i> Modular Kitchen</span>
+            <span><i class="fa-solid fa-door-open"></i> Wardrobe</span>
+            <span><i class="fa-solid fa-layer-group"></i> False Ceiling</span>
+        </div>
     </div>
-  </div>
-</div>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="container navbar-content">
-    <div class="logo">QALBI INTERIOR</div>
-    <div>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      <a href="#feedback">Feedback</a>
-    </div>
-  </div>
-</div>
+    <section id="portfolio" class="section container">
+        <h2>Gallery</h2>
+        <p style="color:#666; margin-bottom:40px;">Explore our premium craftsmanship across various categories.</p>
+        
+        <div class="portfolio-wrapper">
+            <div class="portfolio-tabs" id="portfolioTabs">
+                <div class="portfolio-tab active" data-target="acp">ACP Cladding</div>
+                <div class="portfolio-tab" data-target="glass">Glass Facade</div>
+                <div class="portfolio-tab" data-target="hplandcnc">HPL Facade and CNC Work</div>
+                <div class="portfolio-tab" data-target="kitchen">Modular Kitchen</div>
+                <div class="portfolio-tab" data-target="wardrobe">Wardrobe</div>
+                <div class="portfolio-tab" data-target="ceiling">False Ceiling</div>
+            </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1 id="sparkle-text">QALBI INTERIOR DESIGN</h1>
-    <p>
-      Crafting elegant interiors and durable exterior solutions with precision,
-      creativity, and a commitment to quality.
-    </p>
-  </div>
-</div>
+            <div class="portfolio-gallery">
+                <div class="gallery-slideshow active" id="acp">
+                    <img src="ACP_1.png" alt="ACP Cladding 1">
+                    <img src="ACP_2.png" alt="ACP Cladding 2">
+                    <img src="ACP_3.png" alt="ACP Cladding 3">
+                    <img src="ACP_4.png" alt="ACP Cladding 4">
+                </div>
+                <div class="gallery-slideshow" id="glass">
+                    <img src="Glass_1.png" alt="Glass Facade 1">
+                    <img src="Glass_2.png" alt="Glass Facade 2">
+                    <img src="Glass_3.png" alt="Glass Facade 3">
+                </div>
+                <div class="gallery-slideshow" id="hplandcnc">
+                    <img src="hpl_cnc_1.jpeg" alt="HPL/CNC 1">
+                    <img src="hpl_cnc_2.jpeg" alt="HPL/CNC 2">
+                    <img src="hpl_cnc_3.png" alt="HPL/CNC 3">
+                    <img src="hpl_cnc_4.png" alt="HPL/CNC 4">
+                    <img src="hpl_cnc_5.png" alt="HPL/CNC 5">
+                    <img src="hpl_cnc_6.png" alt="HPL/CNC 6">
+                </div>
+                <div class="gallery-slideshow" id="kitchen">
+                    <img src="modular_kitchen_1.png" alt="Modular Kitchen 1">
+                    <img src="modular_kitchen_2.png" alt="Modular Kitchen 2">
+                    <img src="modular_kitchen_3.png" alt="Modular Kitchen 3">
+                    <img src="modular_kitchen_4.png" alt="Modular Kitchen 4">
+                </div>
+                <div class="gallery-slideshow" id="wardrobe">
+                    <img src="wardrobe_1.png" alt="Wardrobe 1">
+                    <img src="wardrobe_2.png" alt="Wardrobe 2">
+                    <img src="wardrobe_3.png" alt="Wardrobe 3">
+                    <img src="wardrobe_4.png" alt="Wardrobe 4">
+                </div>
+                <div class="gallery-slideshow" id="ceiling">
+                    <img src="ceiling_1.png" alt="False Ceiling 1">
+                    <img src="ceiling_2.png" alt="False Ceiling 2">
+                    <img src="ceiling_3.png" alt="False Ceiling 3">
+                    <img src="ceiling_4.png" alt="False Ceiling 4">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ✅ NEW RUNNING STRIP -->
-<div class="marquee">
-  <div class="marquee-content">
-    <span>ACP Cladding</span>
-    <span>Glass Facade</span>
-    <span>Aluminium Work</span>
-    <span>Modular Kitchen</span>
-    <span>Wardrobe</span>
-    <span>False Ceiling</span>
-    <span>Office Interior</span>
-    <span>Glass Railing</span>
+    <section id="services" class="section" style="background:#f9f9f9;">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p style="color:#666; margin-bottom: 50px;">Comprehensive interior and exterior solutions crafted to perfection.</p>
+            
+            <div style="text-align: center;"><h3 class="subsection-title">Exterior Services</h3></div>
+            <div class="services-card-grid">
+                <div class="service-card-item"><h4>ACP Sheet Cladding</h4><p>High-quality 3mm and 4mm aluminum composite panels for durable, sleek exteriors.</p></div>
+                <div class="service-card-item"><h4>HPL Sheet Work</h4><p>Weather-resistant high-pressure laminates for modern and stylish building facades.</p></div>
+                <div class="service-card-item"><h4>WPC Louver Installation</h4><p>Elegant wood-plastic composite louvers designed for enhanced architectural appeal.</p></div>
+                <div class="service-card-item"><h4>Glass Facade / Curtain Wall</h4><p>Structural glass walls offering a seamless, premium, and contemporary look.</p></div>
+                <div class="service-card-item"><h4>Aluminium Structure Work</h4><p>Strong and lightweight aluminum framing tailored for diverse structural requirements.</p></div>
+                <div class="service-card-item"><h4>Front Elevation Design</h4><p>Custom-designed building frontages expertly crafted to create a striking first impression.</p></div>
+                <div class="service-card-item"><h4>Glass Railing</h4><p>Toughened, transparent glass railings providing high safety with an unobstructed view.</p></div>
+            </div>
 
-    <span>ACP Cladding</span>
-    <span>Glass Facade</span>
-    <span>Aluminium Work</span>
-    <span>Modular Kitchen</span>
-    <span>Wardrobe</span>
-    <span>False Ceiling</span>
-    <span>Office Interior</span>
-    <span>Glass Railing</span>
-  </div>
-</div>
+            <div style="text-align: center;"><h3 class="subsection-title">Interior Services</h3></div>
+            <div class="services-card-grid" style="margin-bottom: 0;">
+                <div class="service-card-item"><h4>Modular Kitchen</h4><p>Smart, space-saving kitchen layouts perfectly tailored for functionality and style.</p></div>
+                <div class="service-card-item"><h4>Wardrobe / Almira</h4><p>Custom-built storage solutions combining true elegance with maximum utility.</p></div>
+                <div class="service-card-item"><h4>TV Unit Design</h4><p>Contemporary entertainment units specifically designed to complement your living space.</p></div>
+                <div class="service-card-item"><h4>False Ceiling</h4><p>Innovative ceiling designs with beautifully integrated lighting for a luxurious ambiance.</p></div>
+                <div class="service-card-item"><h4>Office Interior Work</h4><p>Highly professional and ergonomic workspace designs to effectively boost productivity.</p></div>
+                <div class="service-card-item"><h4>Wooden & PVC Work</h4><p>Premium quality woodwork and highly durable PVC finishes for refined interior details.</p></div>
+            </div>
+        </div>
+    </section>
 
-<!-- ABOUT -->
-<div id="about" class="section container">
-  <h2>About Us</h2>
-  <p>Established in 2021, Qalbi Interior Design specializes in interior, exterior, fabrication and construction services.</p>
-</div>
+    <section id="about" class="section container">
+        <h2>About Us</h2>
+        <div class="about-box">
+            <p><strong style="color: var(--gold-text); font-family: 'Cinzel', serif; font-size: 20px;">QALBI INTERIOR DESIGN</strong> is a small-scale fabrication unit started in the year 2021. With 5 years of dedicated industry experience, and under the leadership of our Proprietor, <strong>Mrs. Meena Jangra</strong>, we have quickly taken a strong hold in the fabrication work of spare part container offices, aluminium structure glazing, and other industrial fabrication and construction projects within a short span of time.</p>
+            <p>We provide expert interior & exterior services including ACP cladding, glass facades, aluminium work, and modular interiors. We lay a strong emphasis on manufacturing our products at par with the latest market developments so as to achieve optimum client satisfaction.</p>
+            <p>Operating nationwide, we take pride in manufacturing superior quality products at affordable prices. Our ultimate commitment is to consistently deliver exceptional quality work, modern designs, and on-time project completion.</p>
+        </div>
+    </section>
 
-<!-- SERVICES -->
-<div id="services" class="section container">
-  <h2>Our Services</h2>
-  <div class="services-grid">
-    <div>Interior Design</div>
-    <div>Exterior Work</div>
-    <div>ACP Cladding</div>
-    <div>Glass Facade</div>
-    <div>Modular Kitchen</div>
-    <div>Wardrobe</div>
-  </div>
-</div>
+    <section class="section why-choose-us">
+        <div class="container why-grid">
+            
+            <div class="why-text">
+                <h3><i class="fa fa-asterisk"></i> Why Choose Us</h3>
+                <h2>YOUR TRUSTED PARTNER<br>FROM START TO FINISH</h2>
+                
+                <div class="rotating-stamp">
+                    <svg viewBox="0 0 100 100">
+                        <defs><path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs>
+                        <text font-size="14" font-weight="bold" fill="#7a6a4f" letter-spacing="2">
+                            <textPath href="#circle">CONTACT US • CONTACT US •</textPath>
+                        </text>
+                    </svg>
+                    <i class="fa fa-comments stamp-icon"></i>
+                </div>
 
-<!-- PROJECTS -->
-<div id="projects" class="section container">
-  <h2>Our Projects</h2>
-  <div class="gallery">
-    <a href="#img1"><img src="images/facade-acp/img1.jpg"></a>
-    <a href="#img2"><img src="images/modular-kitchen/img1.jpg"></a>
-  </div>
-</div>
+                <p>We guide you through the design journey with transparency, professionalism, and personalized service, ensuring a smooth, enjoyable, and stress-free process.</p>
 
-<div id="img1" class="lightbox"><img src="images/facade-acp/img1.jpg"></div>
-<div id="img2" class="lightbox"><img src="images/modular-kitchen/img1.jpg"></div>
+                <div class="expertise-block">
+                    <i class="fa-regular fa-square-check"></i>
+                    <h4>Expertise You Can Trust</h4>
+                    <p>With years of experience and a team of skilled professionals, we deliver innovative, functional, and beautifully crafted spaces that exceed expectations.</p>
+                </div>
 
-<!-- CONTACT -->
-<div id="contact" class="section container">
-  <h2>Contact</h2>
-  <p>Meena Jangra</p>
-  <p>8076293119</p>
-  <p>Qalbi.interior@gmail.com</p>
-</div>
+                <div class="progress-box">
+                    <div class="bar-item">
+                        <div class="bar-header"><span>Interior Design & Fabrication</span><span>95%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-header"><span>Exterior & Structural Layout</span><span>90%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                </div>
 
-<!-- FEEDBACK -->
-<div id="feedback" class="section container">
-  <h2>Send Feedback / Request</h2>
-  <form action="mailto:Qalbi.interior@gmail.com" method="post" enctype="text/plain">
-    <input type="text" placeholder="Your Name" required>
-    <input type="tel" placeholder="Your Phone">
-    <textarea placeholder="Your Message" required></textarea>
-    <button style="padding:10px 20px; background:black; color:white;">Send</button>
-  </form>
-</div>
+                <a href="#contact" class="btn-quote" style="background-color: var(--dark-olive); color: white; margin-top: 10px;">Get In Touch</a>
+            </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  © 2026 Qalbi Interior Design
-</div>
+            <div class="why-images">
+                <img src="why_choose_2.avif" alt="Interior View" class="img-top">
+                <img src="why_choose_1.avif" alt="Living Space" class="img-bottom">
+                <div class="stats-box">
+                    <h4>5000+</h4>
+                    <p>Hours of Design<br>Work</p>
+                </div>
+            </div>
 
-<script>
-const text = document.getElementById("sparkle-text");
-let last = 0;
+        </div>
+    </section>
 
-text.addEventListener("mousemove", (e) => {
-  if (Date.now() - last < 35) return;
-  last = Date.now();
+    <section class="section container">
+        <h2>How It Works</h2>
+        <p style="color:#666;">Our simple and transparent 4-step process to transform your space.</p>
+        
+        <div class="how-it-works-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Consultation</h4>
+                <p>We meet to understand your vision, requirements, and budget constraints.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>Design & Planning</h4>
+                <p>Our experts create detailed layouts, 3D designs, and material selections.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Fabrication & Build</h4>
+                <p>We manufacture and execute the design on-site with utmost precision.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>Final Handover</h4>
+                <p>We deliver your beautifully transformed space, perfectly on time.</p>
+            </div>
+        </div>
+    </section>
 
-  const rect = text.getBoundingClientRect();
+    <section class="section" style="background:#f9f9f9;">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What areas do you provide services in? <i class="fa fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>We operate nationwide across India. Our manufacturing unit is located in Ashok Vihar Phase 3, Gurgaon, and we are capable of executing both residential and commercial projects effectively across the country.</p></div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you manufacture your own materials? <i class="fa fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Yes, Qalbi Interior Design is primarily a fabrication unit. We manufacture superior quality products (like modular kitchens, wardrobes, and structural glazing components) at affordable prices to maintain strict quality control.</p></div>
+                </div>
 
-  const sparkle = document.createElement("div");
-  sparkle.classList.add("sparkle");
+                <div class="faq-item">
+                    <div class="faq-question">How long does a typical interior project take? <i class="fa fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>The timeline varies significantly depending on the scope of work. A standard modular kitchen might take 2-3 weeks, whereas complete residential interiors or large exterior structural glazing can take 6-12 weeks. We provide exact timelines during the design phase.</p></div>
+                </div>
 
-  sparkle.style.left = (e.clientX - rect.left) + "px";
-  sparkle.style.top = (e.clientY - rect.top) + "px";
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer both Interior and Exterior services? <i class="fa fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Absolutely. We specialize in exterior fabrication (ACP cladding, HPL, glass facades, aluminium structures) as well as premium interior solutions (modular kitchens, false ceilings, office interiors).</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  text.appendChild(sparkle);
+    <section id="contact" class="section container">
+        <h2>Contact Us</h2>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>We'd love to hear from you! Whether you have questions, need a consultation, or want to discuss a new project.</p>
+                
+                <div class="info-item">
+                    <i class="fa fa-phone"></i>
+                    <div>
+                        <h4>Phone Number</h4>
+                        <p>+91 7428717540</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-envelope"></i>
+                    <div>
+                        <h4>Email Address</h4>
+                        <p>Qalbi.interior@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Our Location</h4>
+                        <p>First Floor, 189/8 Gali No5b<br>Ashok Vihar Phase 3, Gurgaon</p>
+                    </div>
+                </div>
+            </div>
 
-  setTimeout(() => sparkle.remove(), 1000);
-});
-</script>
+            <div class="contact-box">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email ID *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" placeholder="10-digit contact number">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message (Optional)</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id="scrollTop"><i class="fa fa-chevron-up"></i></a>
+
+    <footer class="footer">
+        © 2026 Qalbi Interior Design. Built with Heart.
+    </footer>
+
+    <script>
+        // Navbar & Scroll-to-Top Logic
+        const navbar = document.getElementById("navbar");
+        const scrollTopBtn = document.getElementById("scrollTop");
+
+        window.addEventListener("scroll", function(){
+            navbar.classList.toggle("scrolled", window.scrollY > 50);
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        });
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const navLinks = document.getElementById("navLinks");
+        
+        mobileMenuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- Gallery Slideshow Logic ---
+        let slideInterval;
+
+        function startSlideshow(targetId) {
+            clearInterval(slideInterval); 
+            
+            const container = document.getElementById(targetId);
+            if (!container) return;
+            
+            const images = container.querySelectorAll('img');
+            if (images.length === 0) return;
+
+            images.forEach(img => img.classList.remove('active-slide'));
+            
+            let currentIndex = 0;
+            images[currentIndex].classList.add('active-slide');
+
+            slideInterval = setInterval(() => {
+                images[currentIndex].classList.remove('active-slide');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active-slide');
+            }, 3000); 
+        }
+
+        const tabs = document.querySelectorAll('.portfolio-tab');
+        const slideshows = document.querySelectorAll('.gallery-slideshow');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                slideshows.forEach(s => s.classList.remove('active'));
+
+                tab.classList.add('active');
+                
+                const targetId = tab.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+                
+                startSlideshow(targetId);
+            });
+        });
+
+        startSlideshow('acp');
+
+        // --- FAQ Accordion Logic ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const activeItem = document.querySelector('.faq-item.active');
+                if (activeItem && activeItem !== item) {
+                    activeItem.classList.remove('active');
+                }
+                item.classList.toggle('active');
+            });
+        });
+
+        // --- Google Sheets Integration Logic ---
+        const scriptURL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; 
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerHTML = "Sending...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    if(response.ok) {
+                        alert('Thank you! Your request has been sent successfully.');
+                        btn.disabled = false;
+                        btn.innerHTML = "Submit Request";
+                        form.reset();
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Something went wrong. Please check your connection or contact us directly via WhatsApp.');
+                    btn.disabled = false;
+                    btn.innerHTML = "Submit Request";
+                });
+        });
+    </script>
 
 </body>
 </html>
